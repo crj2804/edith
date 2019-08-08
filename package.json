@@ -12,5 +12,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
     "sass": "^1.22.9"
+  },
+  "dependencies": {
+    "nerdamer": "^0.8.4"
   }
 }

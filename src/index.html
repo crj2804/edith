@@ -1,5 +1,48 @@
 <html>
   <body>
-    <script src="./index.js"></script>
+    <form name="edith">
+    <div class="container">
+      <h1> E.D.I.T.H </h1>
+      <h2> Math Expression Calculator </h2>
+      <div class="qt">
+        <input type="text" name="expression" placeholder="Enter your expression"/>
+      </div>
+      <div class="qt" id="showDeriv" style="display: none" />
+      <input type="text" name="diff" placeholder="Nth Derivative:" /> <br />
+    </div>
+    <div class="qt" id="showText" style="display: none">
+      <input type="text" name="fromInput" placeholder="First Bound" /> <br />
+      <input type="text" name="toInput" placeholder="Second Bound" /> <br />
+    </div>
+    <div class="qt" id="showXY" style="display: none">
+      <input type="text" name="xyres" placeholder="With respect to? (x or y)" /> <br />
+    </div>
+    <div class="qt">
+
+      <input type="text" id="Result" placeholder="Result" />
+    </div>
+    <select name="nerdFunc" id="stark" onchange="myApp.showHidden()">
+      <option value="SelectO" selected="selected"> Select an option: </option>
+      <option value="expand" id="arith"> Arithmetic(add,subt,mult,div) </option>
+      <option value="expand" id="cfexpand" > Expand </option>
+      <option value="factor" id="factor"> Factor </option>
+      <option value="partfrac" id="partialf"> Partial Fractions </option>
+      <option value="solve" id="solve"> Solve </option>
+      <option value="diff" id="derivative"> Derivative </option>
+      <option value="integrate" id="integral"> Integrate (indefinite) </option>
+      <option value="defint" id="definteg"> Integrate (definite) </option>
+    </select>
+    <span class="error hidden" id="inputError">Your expression is not factorable.</span>
+    <button type="button" id="calc">Calculate</button>
+    <input type="reset" id="reset" value="Reset" onclick="myApp.hideHidden()" />
+    </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@0.7.16/nerdamer.core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@0.7.16/Algebra.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@0.7.16/Calculus.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@0.7.16/Solve.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@0.7.16/Special.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
