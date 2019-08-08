@@ -1,3 +1,186 @@
+$colors: rgba(20, 0, 153, 0.75);
+
+@mixin translate($x...) {
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}
+
+@mixin transition($x...) {
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}
+
 html {
-  background-color: blue;
+  background-color: $colors;
+  font-family: Times New Roman, sans-serif;
+  font-weight: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  color: $colors;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: -15px;
+}
+
+h2 {
+  color: $colors;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.container {
+  background-color: rgba(134, 119, 232, 1);
+  position: relative;
+  box-sizing: border-box;
+  padding: 30px 25px;
+  border-radius: 40px;
+}
+
+button {
+  @include transition(color 0.25s, background-color 0.25s, border-color 0.25s);
+  margin-top: 35px;
+  background-color: white;
+  border: 1px solid $colors;
+  line-height: 0;
+  font-size: 17px;
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  border-radius: 40px;
+  color: black;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+button:hover,
+:focus {
+  outline: none;
+  color: white;
+  background-color: $colors;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+#reset {
+  @include transition(color 0.25s, background-color 0.25s, border-color 0.25s);
+  margin-top: 35px;
+  background-color: white;
+  border: 1px solid $colors;
+  line-height: 0;
+  font-size: 17px;
+  display: block;
+  margin: 10px auto;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  border-radius: 40px;
+  color: black;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#reset:hover,
+:focus {
+  outline: none;
+  color: white;
+  background-color: $colors;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+.qt {
+  position: relative;
+
+  padding: 10px 0;
+
+  &:nth-of-type(1) {
+    padding-top: 0;
+  }
+
+  &:nth-of-type(2) {
+    margin-bottom: -5px;
+    padding-top: 5px;
+    padding-bottom: 0;
+  }
+
+  &:nth-of-type(3) {
+    padding-top: 5px;
+    padding-bottom: 0;
+  }
+
+  &:nth-of-type(4) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &:nth-of-type(5) {
+    padding-top: 0;
+  }
+}
+
+input[type="text"] {
+  @include transition(all 0.3s, ease-in-out);
+  appearance: none;
+  color: black;
+  background-color: white;
+  border: 1px solid $colors;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.8;
+  font-size: 17px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border-color: rgba(134, 119, 232, 1);
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+input[type="text"]:hover,
+:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+#stark {
+  position: relative;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 40px;
+  font-size: 17px;
+  color: black;
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid $colors;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#stark:hover,
+:focus {
+  outline: none;
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+.hidden {
+  display: none;
 }
