@@ -1,13 +1,27 @@
 import './index.scss';
 
 function createCalculator() {
-  const hiddenInput1 = document.getElementById("showText");
-  const hiddenDeriv = document.getElementById("showDeriv");
-  const hiddenXY = document.getElementById("showXY");
+  const form = document.forms.edith;
+  const { elements } = form;
+  const NERDFUNCS = ['expand', 'factor', 'partfrac', 'solve', 'diff', 'integrate', 'defint'];
+  const OPTION_LABELS = ['Arithmetic(add,subt,mult,div)', 'Expand', 'Factor', 'Partial Fractions', 'Solve', 'Derivative', 'Integrate (indefinite)', 'Integrate (definite)'];
+  const OPTION_NAMES = ['expand', ...NERDFUNCS];
+  const [expand, factor, partfrac, solve, deriv, integrate, defint] = NERDFUNCS;
+
+  function renderOptions() {
+    const { nerdFunc } = elements;
+
+    function createOption({ name, content }) {
+      const option = document.createElement('option');
+      option.setAttribute('value', name);
+      option.innerHTML = content;
+      nerdFunc.add(option);
+    }
+
+    OPTION_NAMES.map((option, index) => createOption({ name: option, content: OPTION_LABELS[index] }));
+  }
 
   function Calculate() {
-    const form = document.forms.edith;
-    const { elements } = form;
     const { expression, diff, fromInput, toInput, xyres } = elements;
 
     function getQueryString() {
@@ -25,33 +39,30 @@ function createCalculator() {
     }
   }
 
+  const hiddenInput1 = document.getElementById("showText");
+  const hiddenDeriv = document.getElementById("showDeriv");
+  const hiddenXY = document.getElementById("showXY");
+
   function showHidden() {
     //hides or unhides textboxes based on selected option from list
-    var selectId = document.getElementById("stark");
+    const selectId = elements.nerdFunc;
+
+    hiddenDeriv.style.display = "none";
+
     hiddenInput1.style.display =
-      selectId.value == "defint" ? "block" : "none";
+      selectId.value == defint ? "block" : "none";
     hiddenXY.style.display = selectId.value == "defint" ? "block" : "none";
 
-    if (selectId.value == "diff") {
+    if (selectId.value == deriv) {
       hiddenDeriv.style.display = "";
-      selectId.value == "diff" ? "block" : "none";
-      hiddenXY.style.display =
-        selectId.value == "diff" ? "Block" : "none";
-    } else if (selectId.value == "partfrac") {
-      hiddenDeriv.style.display = "none";
-      hiddenXY.style.display =
-        selectId.value == "partfrac" ? "block" : "none";
-    } else if (selectId.value == "solve") {
-      hiddenDeriv.style.display = "none";
-      hiddenXY.style.display = selectId.value == "solve" ? "block" : "none";
-    } else if (selectId.value == "integrate") {
-      hiddenDeriv.style.display = "none";
-      hiddenXY.style.display =
-        selectId.value == "integrate" ? "block" : "none";
-    } else if (selectId.value == "defint") {
-      hiddenDeriv.style.display = "none";
+      hiddenXY.style.display = "block";
+    } else if (selectId.value == partfrac) {
+      hiddenXY.style.display = "block";
+    } else if (selectId.value == solve) {
+      hiddenXY.style.display = "block";
+    } else if (selectId.value == integrate) {
+      hiddenXY.style.display = "block";
     } else {
-      hiddenDeriv.style.display = "none";
       hiddenXY.style.display = "none";
     }
   }
@@ -63,6 +74,7 @@ function createCalculator() {
   }
 
   function init() {
+    renderOptions();
     document.getElementById("calc").addEventListener("click", () => {
       Calculate();
     });
