@@ -18,7 +18,7 @@ function createCalculator() {
       nerdFunc.add(option);
     }
 
-    OPTION_NAMES.map((option, index) => createOption({ name: option, content: OPTION_LABELS[index] }));
+    OPTION_NAMES.forEach((option, index) => createOption({ name: option, content: OPTION_LABELS[index] }));
   }
 
   function Calculate() {
